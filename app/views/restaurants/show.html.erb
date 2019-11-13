@@ -1,0 +1,25 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <div class="card m-2">
+        <li><%= review.content %></li>
+        <li><%= review.rating %></li>
+        <%#= link_to restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure ?"} do %>
+      </div>
+    <% end %>
+  </ul>
+
+  <%= link_to "Edit restaurant", edit_restaurant_path(@restaurant), class: "btn btn-success"  %>
+
+  <%= link_to "Back to list", restaurants_path, class: "btn btn-primary"  %>
+
+  <%= link_to "Delete this restaurant", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure ?"}, class: "btn btn-danger" %>
+
+  <%= link_to "Add a Review", new_restaurant_review_path(@restaurant), class: "btn btn-warning" %>
+
+</div>
